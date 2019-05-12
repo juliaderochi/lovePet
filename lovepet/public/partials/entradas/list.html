@@ -1,0 +1,32 @@
+<div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3">
+    <h1 class="h2">Entradas</h1>
+    <div class="btn-toolbar mb-2 mb-md-0">
+        <a ui-sref="entradaNovo" class="btn btn-sm btn-outline-success">
+            <span class="fas fa-plus-square"></span>
+            Novo entrada
+        </a>
+    </div>
+</div>
+<div class="table-responsive">
+    <table class="table table-striped table-sm">
+        <thead>
+            <tr>
+                <th>Emissão</th>
+                <th>Animal</th>
+                <th class="text-right">Total</th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr ng-repeat="entrada in vm.entradas">
+                <td>{{entrada.emissao | date: 'dd/MM/yyyy HH:mm'}}</td>
+                <td>{{entrada.animal.nome}}</td>
+                <td class="text-right">{{entrada.total}}</td>
+                <td class="text-right">
+                    <a ui-sref="entradaEditar({id:entrada._id})"><span class="fas fa-edit"></span></a>
+                    <a href="#" ng-click="vm.excluir(entrada._id)"><span class="fas fa-trash-alt"></span></a>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</div>

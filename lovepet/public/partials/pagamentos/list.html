@@ -1,0 +1,32 @@
+<div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3">
+    <h1 class="h2">Pagamentos</h1>
+    <div class="btn-toolbar mb-2 mb-md-0">
+        <a ui-sref="pagamentoNovo" class="btn btn-sm btn-outline-success">
+            <span class="fas fa-plus-square"></span>
+            Novo pagamento
+        </a>
+    </div>
+</div>
+<div class="table-responsive">
+    <table class="table table-striped table-sm">
+        <thead>
+            <tr>
+                <th>Emissão</th>
+                <th>Cliente</th>
+                <th class="text-center">Total</th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr ng-repeat="pagamento in vm.pagamentos">
+                <td>{{pagamento.emissao | date: 'dd/MM/yyyy HH:mm'}}</td>
+                <td>{{pagamento.cliente.nome}}</td>
+                <td class="text-right">{{pagamento.total | number:2}}</td>
+                <td class="text-right">
+                    <a ui-sref="pagamentoEditar({id:pagamento._id})"><span class="fas fa-edit"></span></a>
+                    <a href="#" ng-click="vm.excluir(pagamento._id)"><span class="fas fa-trash-alt"></span></a>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</div>
