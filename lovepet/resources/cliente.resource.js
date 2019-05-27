@@ -4,6 +4,8 @@ const clienteModel = mongoose.model('clientes');
 module.exports = function (app) {
     app.get('/clientes', function (req, resp) {
         clienteModel.find()
+            .populate('animal')
+            .populate('animal', 'nome')
             .then(
                 function (data) {
                     resp.status(200).send(data);
@@ -26,6 +28,7 @@ module.exports = function (app) {
     });
     app.get('/clientes/:id', function (req, resp) {
         clienteModel.findById(req.params.id)
+            .populate('animal')
             .then(
                 function (data) {
                     if (!data) {

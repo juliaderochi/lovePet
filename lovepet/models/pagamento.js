@@ -4,7 +4,6 @@ const Schema = mongoose.Schema;
 const _model = new Schema({
     dataPagamento: {
         type: Date,
-        default: Date.now
     },
     entrada: {
         required: true,

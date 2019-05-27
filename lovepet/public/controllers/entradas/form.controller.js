@@ -56,6 +56,18 @@ function EntradaFormController (EntradaService, AnimalService, ServicoService, $
         vm.indexSelecionado = null;
     }
 
+    vm.editarItem = function(selecionado) {
+        // vm.entrada.itens = vm.entrada.itens || [];
+        vm.indexSelecionado = {selecionado}
+        angular.copy(selecionado, vm.itemSelecionado);
+    }
+
+    vm.excluirItem = function() {
+        vm.entrada.itens = vm.entrada.itens || [];
+        vm.itemSelecionado = {}
+        vm.indexSelecionado = null;
+    }
+
     vm.saveItem = function() {
         if (vm.indexSelecionado) {
             vm.entrada.itens[vm.indexSelecionado] = vm.itemSelecionado;

@@ -16,7 +16,7 @@ function ClienteListController(ClienteService){
     _load();
 
     vm.excluir = function (id) {
-        if (confirm('Deseja realmente excluir?')) {
+        if (confirm('Deseja realmente excluir esse registro?')) {
             ClienteService.remove(id)
                 .then(function() {
                     _load();

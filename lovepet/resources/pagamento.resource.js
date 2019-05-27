@@ -3,8 +3,10 @@ const pagamentoModel = mongoose.model('pagamentos');
 
 module.exports = function (app) {
     app.get('/pagamentos', function (req, resp) {
-        pagamentoModel.find({}, ['dataPagamento', 'entrada', 'totalPago'], {sort: {emissao: 1}})
+        pagamentoModel.find({}, ['dataPagamento', 'entrada', 'animal', 'totalPago'], {sort: {emissao: 1}})
             .populate('cliente', 'documento nome email')
+            .populate('entrada', 'entrada.animal')
+            .populate('animal', 'nome')
             .then(
                 function (data) {
                     resp.status(200).send(data);
@@ -27,8 +29,7 @@ module.exports = function (app) {
     });
     app.get('/pagamentos/:id', function (req, resp) {
         pagamentoModel.findById(req.params.id)
-            .populate('cliente')
-            .populate('itens.servico')
+            .populate('animal', 'nome')
             .then(
                 function (data) {
                     if (!data) {

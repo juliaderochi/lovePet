@@ -16,7 +16,7 @@ function PagamentoListController(PagamentoService){
     _load();
 
     vm.excluir = function (id) {
-        if (confirm('Deseja realmente excluir?')) {
+        if (confirm('Deseja realmente excluir esse registro?')) {
             PagamentoService.remove(id)
                 .then(function() {
                     _load();

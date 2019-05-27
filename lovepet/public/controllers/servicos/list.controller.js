@@ -16,7 +16,7 @@ function ServicoListController(ServicoService){
     _load();
 
     vm.excluir = function (id) {
-        if (confirm('Deseja realmente excluir?')) {
+        if (confirm('Deseja realmente excluir esse registro?')) {
             ServicoService.remove(id)
                 .then(function() {
                     _load();

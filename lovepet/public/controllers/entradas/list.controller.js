@@ -24,7 +24,7 @@ function EntradaListController(EntradaService){
     _load();
 
     vm.excluir = function (id) {
-        if (confirm('Deseja realmente excluir?')) {
+        if (confirm('Deseja realmente excluir esse registro?')) {
             EntradaService.remove(id)
                 .then(function() {
                     _load();

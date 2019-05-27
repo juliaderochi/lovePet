@@ -16,7 +16,7 @@ function EmpresaListController(EmpresaService){
     _load();
 
     vm.excluir = function (id) {
-        if (confirm('Deseja realmente excluir?')) {
+        if (confirm('Deseja realmente excluir esse registro?')) {
             EmpresaService.remove(id)
                 .then(function() {
                     _load();

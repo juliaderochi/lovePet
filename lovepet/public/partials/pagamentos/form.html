@@ -4,7 +4,7 @@
         <div class="form-row">
             <div class="form-group col-md-4">
                 <label>Data de pagamento:</label>
-                <input ng-model="vm.pagamento.dataPagamento  | date: 'dd/MM/yyyy HH:mm'" type="text" class="form-control text-right">
+                <input ng-model="vm.pagamento.dataPagamento" type="datetime" class="form-control text-right">
             </div>
         </div>
         <div class="form-group">
@@ -12,7 +12,7 @@
             <select 
                 class="form-control"
                 ng-model="vm.pagamento.entrada"
-                ng-options="item as item.emissao for item in vm.entradas track by item._id">
+                ng-options="item as item.animal.nome for item in vm.entradas track by item._id">
             </select>
         </div>
         <div class="text-right">

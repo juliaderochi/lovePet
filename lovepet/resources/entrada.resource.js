@@ -3,8 +3,9 @@ const entradaModel = mongoose.model('entradas');
 
 module.exports = function (app) {
     app.get('/entradas', function (req, resp) {
-        entradaModel.find({}, ['emissao', 'animais', 'itens', 'total'], {sort: {emissao: 1}})
-            .populate('animal', 'documento nome email')
+        entradaModel.find({}, ['emissao', 'animais', 'itens', 'total'], {sort: {animais: 1}})
+            .populate('entrada', 'emissao')
+            .populate('animal', 'nome')
             .populate('itens.servico')
             .then(
                 function (data) {
